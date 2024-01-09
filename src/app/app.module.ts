@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { FakeApiService } from './fake-api.service';
+import { appRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { FakeApiService } from './fake-api.service';
   ],
   imports: [
     BrowserModule,
-    AuthModule
+    AuthModule,
+    appRoutingModule
   ],
   providers: [
     FakeApiService  
