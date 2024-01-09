@@ -1,0 +1,30 @@
+<!-- login.component.html -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center">Đăng Nhập</h2>
+          <p class="card-text text-center">username: 'user1', password: 'pass1'</p>
+          <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{ errorMessage }}</div>
+          <form (ngSubmit)="login()">
+            <div class="mb-3">
+              <label for="username" class="form-label">Tên người dùng:</label>
+              <input type="text" id="username" [(ngModel)]="username" name="username" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Mật khẩu:</label>
+              <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button (click)="logout()" class="btn btn-primary">Đăng xuất</button>
+</div>
+
+

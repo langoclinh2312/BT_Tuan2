@@ -1,0 +1,11 @@
+/* login.component.css */
+.login-container {
+    max-width: 300px;
+    margin: auto;
+  }
+  
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
