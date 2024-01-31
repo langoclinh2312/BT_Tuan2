@@ -1,0 +1,167 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "T22132123",
+      "author": "F. Scott Fitzgerald231",
+      "price": 15.99123,
+      "quantity": 50134,
+      "description": "A classic novel about the American Dream.",
+      "category": [
+        "Fiction",
+        "Classic"
+      ],
+      "year": 1925,
+      "rating": [
+        {
+          "username": "user1",
+          "score": 4
+        },
+        {
+          "username": "user2",
+          "score": 5
+        }
+      ],
+      "image": "https://www.w3schools.com/html/pic_trulli.jpg"
+    },
+    {
+      "id": "2",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "price": 12,
+      "quantity": 50123,
+      "description": "A classic novel about the American Dream.",
+      "category": [
+        "Fiction",
+        "Classic"
+      ],
+      "year": 1925,
+      "rating": [
+        {
+          "username": "user1",
+          "score": 4
+        },
+        {
+          "username": "user2",
+          "score": 5
+        }
+      ],
+      "image": "https://www.w3schools.com/html/pic_trulli.jpg"
+    },
+    {
+      "id": "3",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "price": 18,
+      "quantity": 5022,
+      "description": "A classic novel about the American Dream.",
+      "category": [
+        "Fiction",
+        "Classic"
+      ],
+      "year": 1925,
+      "rating": [
+        {
+          "username": "user1",
+          "score": 4
+        },
+        {
+          "username": "user2",
+          "score": 5
+        }
+      ],
+      "image": "https://www.w3schools.com/html/pic_trulli.jpg"
+    },
+    {
+      "id": "4",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "price": 15.99,
+      "quantity": 50,
+      "description": "A classic novel about the American Dream.",
+      "category": [
+        "Fiction",
+        "Classic"
+      ],
+      "year": 1925,
+      "rating": [
+        {
+          "username": "user1",
+          "score": 4
+        },
+        {
+          "username": "user2",
+          "score": 5
+        }
+      ],
+      "image": "https://www.w3schools.com/html/pic_trulli.jpg"
+    },
+    {
+      "id": "366f8303-9ebc-40e9-be4e-d526bb4c7087",
+      "title": "dev",
+      "author": "",
+      "price": 0,
+      "quantity": 0,
+      "description": "",
+      "category": [],
+      "year": 0,
+      "rating": [],
+      "image": ""
+    },
+    {
+      "id": "5730bf47-5601-41bb-ad60-b863e346f067",
+      "title": "dev2",
+      "author": "dev2",
+      "price": 123,
+      "quantity": 0,
+      "description": "",
+      "category": [],
+      "year": 0,
+      "rating": [],
+      "image": ""
+    }
+  ],
+  "admins": [
+    {
+      "username": "admin",
+      "password": "admin",
+      "email": "admin1@example.com",
+      "fullName": "Admin One",
+      "phoneNumber": "123456789",
+      "address": "123 Street, City",
+      "id": "1",
+      "roles": "admin"
+    },
+    {
+      "username": "user",
+      "password": "user",
+      "email": "admin2@example.com",
+      "fullName": "Admin Two",
+      "phoneNumber": "987654321",
+      "address": "456 Street, City",
+      "id": "2",
+      "roles": "user"
+    },
+    {
+      "username": "dev213",
+      "password": "dádf",
+      "email": "dev20102015@gmail.com",
+      "fullName": "Admin One2",
+      "phoneNumber": "987654321",
+      "address": "123 Street, City",
+      "id": "1705650270165",
+      "roles": "user"
+    },
+    {
+      "id": "1706081772637",
+      "username": "dev213",
+      "password": "dev",
+      "repeatPassword": "dev",
+      "email": "dev20102015@gmail.com",
+      "fullName": "dev",
+      "phoneNumber": "123213",
+      "address": "123123",
+      "roles": "user"
+    }
+  ]
+}

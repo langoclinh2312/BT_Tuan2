@@ -22,11 +22,12 @@ export class LoginComponent {
 
     this.authService.authenticate(this.username, this.password).subscribe(
       (data) => {
-        // Xử lý khi xác thực thành công
-        this.authService.saveToken(data.token);
-        this.authService.saveRoles(data.roles);
-        // Redirect hoặc thực hiện hành động cần thiết
-        //this.router.navigate(['/']);
+        if(data.roles === 'admin') {
+          this.router.navigate(['/admin']);
+        }
+        if(data.roles === 'user') {
+          this.router.navigate(['/books']);
+        }
         this.errorMessage = 'Đăng nhập thành công';
       },
       (error) => {

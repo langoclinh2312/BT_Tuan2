@@ -1,0 +1,23 @@
+<!-- cart.component.html -->
+<div class="container">
+  <h1 class="mt-5">Cart Page</h1>
+  <div *ngIf="cartItems && cartItems.length > 0" class=" mt-3">
+    <div *ngFor="let item of cartItems; let i = index" class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Item: {{ item.title }}</h5>
+        <p class="card-text">Price: {{ item.price }}</p>
+        <div class="form-floating mb-3">
+          <input type="number" [(ngModel)]="item.quantity" min="1" class="form-control"/>
+          <label for="floatingInput">Qty</label>
+        </div>
+        <button (click)="updateQuantity(i, item.quantity)" class="btn btn-primary">Update</button>
+        <!-- Add buttons to interact with the cart -->
+        <button (click)="removeCartItem(i)" class="ms-2 btn btn-danger">Remove</button>
+      </div>
+    </div>
+    <div class="mb-3">Total: {{ calculateTotal() }}</div>
+    <button (click)="clearCart()" class="btn btn-warning">Clear Cart</button>
+  </div>
+  <h3 *ngIf="!cartItems || cartItems.length === 0" class="mt-3">Your cart is empty.</h3>
+</div>
+

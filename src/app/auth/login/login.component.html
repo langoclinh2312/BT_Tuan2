@@ -5,7 +5,8 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title text-center">Đăng Nhập</h2>
-          <p class="card-text text-center">username: 'user1', password: 'pass1'</p>
+          <p class="card-text text-center">username: 'admin', password: 'admin'</p>
+          <p class="card-text text-center">username: 'user', password: 'user'</p>
           <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{ errorMessage }}</div>
           <form (ngSubmit)="login()">
             <div class="mb-3">
@@ -24,7 +25,6 @@
       </div>
     </div>
   </div>
-  <button (click)="logout()" class="btn btn-primary">Đăng xuất</button>
 </div>
 
 

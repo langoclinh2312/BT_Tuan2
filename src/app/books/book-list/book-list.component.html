@@ -1,0 +1,197 @@
+<!-- book-list.component.html -->
+<div class="container mt-4">
+  <!-- Add a search bar -->
+  <div class="input-group mb-3">
+    <input type="text" [(ngModel)]="searchKeyword" (input)="searchBooks()" placeholder="Search..." class="form-control me-2" >
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="searchBooks()">Search</button>
+    </div>
+  </div>
+  <span>Note: seach by id</span>
+  <div class="row mt-2">
+    <div class="col-md-12">
+      <label for="sortCriteria">Sort By:</label>
+      <select class="form-control" (change)="sortBooks()">
+        <option value="title">Title</option>
+        <option value="author">Author</option>
+        <option value="price">Price</option>
+        <option value="quantity">Quantity</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Display the sortedBooks -->
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <h2>Book List</h2>
+
+      <!-- Table to display books -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of sortedBooks">
+            <th scope="row">{{ book.id }}</th>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.price | currency }}</td>
+            <td>{{ book.quantity }}</td>
+            <td>
+              <button class="btn btn-primary btn-sm" (click)="viewDetails(book)">View Details</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteBook(book.id)">Delete</button>
+              <button class="btn btn-warning btn-sm" (click)="updateBookForm.patchValue(book); openUpdateModal()">Update</button>
+              <button class="btn btn-success btn-sm" (click)="addToCart(book)">Add to Cart</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button class="btn btn-primary mt-4" (click)="openAddBookForm()">Add New Books</button>
+</div>
+
+<!-- Form to add a new book -->
+<div class="modal fade" tabindex="-1" role="dialog" [ngClass]="{'show': isAddNewModalOpen}">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Form Add New Book</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeAddBookForm()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="newBookForm" (ngSubmit)="addBook()">
+          <!-- Title -->
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title"  formControlName="title" required>
+  
+            <div *ngIf="newBookForm.get('title')?.touched  && (newBookForm.get('title')?.dirty || newBookForm.get('title')?.touched)" class="invalid-feedback show">
+              <div *ngIf="newBookForm.get('title')?.errors?.['required']">Name is required.</div>
+              <div *ngIf="newBookForm.get('title')?.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+            
+          </div>
+          <!-- Display validation messages for title -->
+            
+  
+          <!-- Author -->
+          <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" class="form-control" id="author" formControlName="author">
+            <div *ngIf="newBookForm.get('author')?.touched  && (newBookForm.get('author')?.dirty || newBookForm.get('author')?.touched)" class="invalid-feedback show">
+              <div *ngIf="newBookForm.get('author')?.errors?.['required']">Author is required.</div>
+              <div *ngIf="newBookForm.get('author')?.errors?.['minlength']">
+                Author must be at least 4 characters long.
+              </div>
+            </div>
+          </div>
+  
+          <!-- Price -->
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" class="form-control" id="price" formControlName="price">
+            <div *ngIf="newBookForm.get('price')?.touched  && (newBookForm.get('price')?.dirty || newBookForm.get('price')?.touched)" class="invalid-feedback show">
+              <div *ngIf="newBookForm.get('price')?.errors?.['required']">price is required.</div>
+            </div>
+          </div>
+  
+          <!-- Quantity -->
+          <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" class="form-control" id="quantity"  formControlName="quantity">
+            <div *ngIf="newBookForm.get('quantity')?.touched  && (newBookForm.get('quantity')?.dirty || newBookForm.get('quantity')?.touched)" class="invalid-feedback show">
+              <div *ngIf="newBookForm.get('quantity')?.errors?.['required']">quantity is required.</div>
+            </div>
+          </div>
+  
+          <!-- Description -->
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" formControlName="description"></textarea>
+          </div>
+  
+          <!-- Category -->
+          <div class="form-group">
+            <label for="category">Category:</label>
+            <input type="text" class="form-control" id="category" formControlName="category">
+          </div>
+  
+          <!-- Year -->
+          <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="number" class="form-control" id="year" formControlName="year">
+          </div>
+  
+          <!-- Rating -->
+          <div class="form-group">
+            <label for="rating">Rating:</label>
+            <input type="number" class="form-control" id="rating"  formControlName="rating">
+          </div>
+  
+          <!-- Image -->
+          <div class="form-group">
+            <label for="image">Image URL:</label>
+            <input type="text" class="form-control" id="image"  formControlName="image">
+          </div>
+  
+          <button type="submit" class="btn btn-primary btn-full mt-3">Add Book</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal update book -->
+
+<!-- Inside your component's HTML file -->
+<!-- Update Book Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" [ngClass]="{'show': isUpdateModalOpen}">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Book</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeUpdateModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Your update book form here -->
+        <form [formGroup]="updateBookForm">
+          <input type="hidden" formControlName="id">
+
+          <!-- Update the form controls according to your Book model -->
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title" required>
+          </div>
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" class="form-control" id="author" formControlName="author" required>
+          </div>
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" formControlName="price" required>
+          </div>
+          <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" class="form-control" id="quantity" formControlName="quantity" required>
+          </div>
+          <!-- Add other form controls for description, category, year, rating, image, etc. -->
+
+          <button type="button" class="btn btn-primary" (click)="updateBook()">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
